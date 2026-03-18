@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Quán Ăn Vặt Gánh</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Tùy chỉnh màu sắc thương hiệu - Style Giấy Cũ / Vintage */
+        :root {
+            --primary-color: #4A2511;
+            /* Nâu sẫm */
+            --bg-color: #F4E7D3;
+            /* Nền màu giấy cũ */
+            --zalo-color: #0068FF;
+            /* Màu xanh Zalo chuẩn */
+        }
+
+        body {
+            background-color: #2b1708;
+            /* Màu nâu đen vân gỗ */
+            background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+            /* Họa tiết vân gỗ */
+        }
+
+        .app-container {
+            background-color: var(--bg-color);
+            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
+            /* Họa tiết giấy cũ/parchment */
+        }
+
+        /* Khung chứa ảnh Menu - Bỏ fixed aspect ratio để ảnh hiển thị đúng tỷ lệ */
+        .menu-image-container {
+            background-color: #ffffff;
+            border: 2px solid #5D4037;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+        }
+
+        .menu-image-container:hover {
+            transform: scale(1.02);
+        }
+
+        /* Hiệu ứng đập nhịp tim cho nút Zalo để thu hút sự chú ý */
+        .zalo-pulse {
+            animation: pulse-zalo 2s infinite;
+        }
+
+        @keyframes pulse-zalo {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 104, 255, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(0, 104, 255, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 104, 255, 0);
+            }
+        }
+
+        /* Nút nổi ở dưới cùng (Sticky Bottom) */
+        .sticky-bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 28rem;
+            /* Tương đương max-w-md */
+            padding: 16px;
+            background: linear-gradient(to top, rgba(244, 231, 211, 1) 60%, rgba(244, 231, 211, 0));
+            z-index: 50;
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased text-gray-800">
+
+    <!-- App Container: Cố định kích thước giống màn hình điện thoại -->
+    <div class="app-container max-w-md mx-auto min-h-screen relative pb-28 shadow-2xl">
+
+        <!-- Phần Header (Đầu trang) -->
+        <header class="pt-8 pb-6 px-4 text-center">
+            <!-- Mô hình Gánh Tre cách điệu làm điểm nhấn -->
+            <div class="relative w-full flex justify-center mb-6 mt-2">
+                <!-- Đòn gánh (Bamboo pole) có vân đốt tre -->
+                <div class="absolute top-1/2 -translate-y-1/2 w-3/4 h-2.5 bg-[#4A2511] rounded-full shadow-sm"
+                    style="background-image: repeating-linear-gradient(to right, transparent, transparent 20px, rgba(0,0,0,0.1) 20px, rgba(0,0,0,0.1) 22px);">
+                </div>
+
+                <!-- Thúng trái -->
+                <div class="absolute left-[15%] top-1/2 flex flex-col items-center">
+                    <div class="w-0.5 h-10 bg-[#4A2511] rotate-[26deg] transform origin-top"></div>
+                    <div class="w-0.5 h-10 bg-[#4A2511] -rotate-[26deg] transform origin-top absolute"></div>
+                    <div class="w-10 h-4 bg-[#8D6E63] rounded-b-full shadow-md -mt-1 border-t-2 border-[#4A2511] z-10"
+                        style="background-image: url('https://www.transparenttextures.com/patterns/woven.png');"></div>
+                </div>
+
+                <!-- Thúng phải -->
+                <div class="absolute right-[15%] top-1/2 flex flex-col items-center">
+                    <div class="w-0.5 h-10 bg-[#4A2511] rotate-[26deg] transform origin-top"></div>
+                    <div class="w-0.5 h-10 bg-[#4A2511] -rotate-[26deg] transform origin-top absolute"></div>
+                    <div class="w-10 h-4 bg-[#8D6E63] rounded-b-full shadow-md -mt-1 border-t-2 border-[#4A2511] z-10"
+                        style="background-image: url('https://www.transparenttextures.com/patterns/woven.png');"></div>
+                </div>
+
+                <!-- Logo quán ở giữa (Có thể thay bằng logo thật) -->
+                <div
+                    class="relative z-20 w-24 h-24 bg-[#FFFDF8] rounded-full border-4 border-[#4A2511] flex items-center justify-center shadow-xl overflow-hidden ring-4 ring-[#F4E7D3]">
+                    <img src="center.png" alt="Logo" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <h1 class="text-4xl font-extrabold text-[#4A2511] tracking-tight uppercase drop-shadow-sm font-serif">Quán
+                Gánh</h1>
+            <p class="text-lg text-[#8B3A2B] mt-1 font-bold">ĂN VẶT DÂN DÃ</p>
+            <p class="text-sm text-[#4A2511] mt-2 font-medium italic">"Ngon từ gánh nhỏ - Đậm vị tuổi thơ"</p>
+        </header>
+
+        <!-- Phần Nút tương tác phụ (Tùy chọn) -->
+        <div class="px-6 flex gap-3 mb-6">
+            <a href="https://maps.app.goo.gl/SMyaNq6oRgwvTMWQ6" target="_blank"
+                class="flex-1 bg-white border border-[#A1887F] text-[#4A2511] py-2 rounded-full text-sm font-semibold shadow-sm flex items-center justify-center gap-2 transition-transform active:scale-95">
+                📍 Chỉ đường
+            </a>
+            <a href="tel:0901464233"
+                class="flex-1 bg-white border border-[#A1887F] text-[#4A2511] py-2 rounded-full text-sm font-semibold shadow-sm flex items-center justify-center gap-2 transition-transform active:scale-95">
+                📞 Gọi điện
+            </a>
+        </div>
+
+        <!-- Phần hiển thị Menu -->
+        <main class="px-4 space-y-8">
+
+            <div class="text-center flex items-center justify-center gap-2 mb-2">
+                <span class="h-1 w-12 bg-[#8B3A2B] rounded-full"></span>
+                <h2 class="text-xl font-bold text-[#4A2511]">THỰC ĐƠN</h2>
+                <span class="h-1 w-12 bg-[#8B3A2B] rounded-full"></span>
+            </div>
+
+            <!-- Menu Trang 1 -->
+            <div class="menu-wrapper">
+                <p class="text-center text-sm font-bold text-[#8B3A2B] mb-2 flex items-center justify-center gap-1">🌽
+                    ĐỒ NƯỚNG - XÀO - NÓNG HỔI</p>
+                <div class="menu-image-container">
+                    <img src="1.png" class="w-full h-auto object-cover" alt="Menu Đồ Nướng, Xào">
+                </div>
+            </div>
+
+            <!-- Menu Trang 2 -->
+            <div class="menu-wrapper">
+                <p class="text-center text-sm font-bold text-[#8B3A2B] mb-2 flex items-center justify-center gap-1">🌶️
+                    BÁNH TRÁNG TRỘN - CUỘN</p>
+                <div class="menu-image-container">
+                    <img src="2.png" class="w-full h-auto object-cover" alt="Menu Bánh Tráng">
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Nút Zalo Đặt Món Dưới Cùng (Luôn hiển thị khi cuộn) -->
+        <div class="sticky-bottom-bar">
+            <button onclick="openZalo()"
+                class="zalo-pulse w-full bg-[#0068FF] text-white py-4 rounded-2xl font-bold text-lg shadow-xl flex items-center justify-center gap-3 transition-transform active:scale-95">
+                <!-- Icon Zalo giả lập bằng SVG -->
+                <svg viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7">
+                    <path
+                        d="M21.5 11.2c0-5.3-4.9-9.6-10.9-9.6-6.1 0-10.9 4.3-10.9 9.6 0 2.8 1.4 5.3 3.6 7.1-.2 1.2-.8 3.7-.8 3.8 0 .2.2.3.4.2 1.3-.5 3.5-1.5 4.9-2.2 1 .3 2 .4 3 .4 6 0 10.7-4.2 10.7-9.3zm-13.6 2.3c-.6 0-1-.5-1-1s.4-1 1-1 1 .5 1 1-.4 1-1 1zm3.7 0c-.6 0-1-.5-1-1s.4-1 1-1 1 .5 1 1-.5 1-1 1zm3.7 0c-.6 0-1-.5-1-1s.4-1 1-1 1 .5 1 1-.4 1-1 1z">
+                    </path>
+                </svg>
+                CHÁT ZALO ĐẶT MÓN NGAY
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        // Hàm này xử lý khi khách hàng bấm nút Zalo
+        function openZalo() {
+            // ĐIỀN SỐ ĐIỆN THOẠI ZALO CỦA BẠN VÀO ĐÂY (Đã cập nhật theo số điện thoại cung cấp)
+            const soDienThoai = "0901464233";
+
+            // Chuyển hướng người dùng sang ứng dụng Zalo
+            window.location.href = "https://zalo.me/" + soDienThoai;
+        }
+    </script>
+</body>
+
+</html>
